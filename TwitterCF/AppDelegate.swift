@@ -9,26 +9,19 @@
 import UIKit
 
 @UIApplicationMain
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        
-//        self.setupNavigationController()
-        
+        self.setupAppearance()
         return true
     }
     
-    func setupNavigationController() {
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let homeViewController = storyboard.instantiateViewControllerWithIdentifier(HomeViewController.identifier())
-        let navigationController = UINavigationController(rootViewController: homeViewController)
-        self.window?.rootViewController = navigationController
-        self.window?.makeKeyAndVisible()
+    func setupAppearance() {
+        UITabBar.appearance().tintColor = UIColor(red: 255.0, green: 255.0, blue: 255.0, alpha: 1.0)
     }
-
 }
+
 

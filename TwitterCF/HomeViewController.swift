@@ -14,45 +14,27 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBOutlet weak var tableView: UITableView!
     
-    var refreshBarButton: UIBarButtonItem!
-    var spinner: UIActivityIndicatorView
-    
-    var tweets = [Tweet]() {
-        didSet {
-            self.tableView.reloadData()
-            self.navigationItem.rightBarButtonItem = self.refreshBarButton
-        }
-    }
-    
-    class func identifier() -> String {
-        return "HomeViewController"
-    }
+    var tweets = [Tweet]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupTableView()
-        self.getTweets()
+        
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.getAccount()
     }
-
-//    override func didReceiveMemoryWarning() {
-//        super.didReceiveMemoryWarning()
-//    }
-//    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == DetailViewController.identifier() {
-//            let detailViewController = segue.destinationViewController as! DetailViewController
-//            let indexPath = self.tableView.indexPathForSelectedRow {
-//                let tweet = self.tweets[self.tableView.indexPathForSelectedRow.row]
-//                DetailViewController.tweet = tweet
-// 
-//            }
-//            
-//        }
-//    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    // MARK: Week 2 Class + Homework.
     
     func getAccount() {
         LoginService.loginTwitter({ (error, account) -> () in
             if let error = error {
+                
                 print(error)
                 return
             }
@@ -64,9 +46,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
     
-    func authenticateUser() {
+    func authenticateUser(){
         TwitterService.getAuthUser { (error, user) -> () in
-            if let error = error{
+            if let error = error {
                 print(error)
                 return
             }
@@ -79,12 +61,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func getTweets() {
-        
-        NSOperationQueue.mainQueue().addOperationWithBlock { () -> Void in
-            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: self.spinner)
-        }
-        
-        TwitterService.tweetsFromTimeLine { (error, tweets) -> () in
+        TwitterService.tweetsFromHomeTimeline { (error, tweets) -> () in
             if let error = error {
                 print(error)
                 return
@@ -93,31 +70,19 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let tweets = tweets {
                 NSOperationQueue.mainQueue().addOperationWithBlock({ () -> Void in
                     self.tweets = tweets
+                    self.tableView.reloadData()
                 })
             }
         }
     }
     
-    func setupTableView() {
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        self.tableView.estimatedRowHeight = 2
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        self.refreshBarButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem, target: self, action: "getTweets")
-        self.navigationItem.rightBarButtonItem = self.refreshBarButton
-        
-        self.spinner = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.Gray)
-        self.spinner.hidesWhenStopped = true
-
-    }
-    
     // MARK: UITableView
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.tweets.count
+        return tweets.count
     }
+    
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath)
         let tweet = tweets[indexPath.row]
@@ -134,6 +99,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.rowHeight = UITableViewAutomaticDimension
         
         return cell
-        
-        }
+    }
+    
 }
+
+

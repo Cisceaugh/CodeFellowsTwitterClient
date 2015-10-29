@@ -9,11 +9,13 @@
 import Foundation
 
 class User {
+    
     let name: String
     let profileImageURL: String
     
-    init (name: String, profileImageURL: String){
+    init(name: String, profileImageURL: String) {
         self.name = name
         self.profileImageURL = profileImageURL
     }
+    
 }

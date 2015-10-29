@@ -9,27 +9,33 @@
 import Foundation
 import Accounts
 
-typealias TwitterLoginCompletion = (String?, ACAccount?) -> ()
-
 class LoginService {
-    class func loginTwitter(completion: TwitterLoginCompletion) {
+    
+    class func loginTwitter(completionHandler: (String?, ACAccount?) -> ()) {
         
+        // Set up Account Store
         let accountStore = ACAccountStore()
+        
+        // Give Account Store an account type (Twitter)
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
         
-        accountStore.requestAccessToAccountsWithType(accountType, options: nil) {
-            (success, error) -> Void in
-            
+        // End of this is a closure
+        accountStore.requestAccessToAccountsWithType(accountType, options: nil, completion: { (granted, error) -> Void in
             if let _ = error {
-                completion("Request access to accounts returned an error.", nil); return
+                completionHandler("ERROR: Request access to accounts returned an error.", nil); return
             }
             
-            if success {
+            if granted {
                 if let account = accountStore.accountsWithAccountType(accountType).first as? ACAccount {
-                    completion(nil, account)
+                    completionHandler(nil, account); return
                 }
+                
+                // If no account was found
+                completionHandler("ERROR: No twitter accounts were found on this device.", nil); return
             }
-        }
+            
+            // If user did not grant access to Account Store for Twitter accounts
+            completionHandler("Error: This app requires access to the Twitter Accounts.", nil); return
+        })
     }
-    
 }
