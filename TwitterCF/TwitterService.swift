@@ -60,7 +60,7 @@ class TwitterService {
                     completion("ERROR: SLRequest type GET for /1.1/account/verify_credentials.json could not be comepleted", nil);
                     return
                 }
-                
+                //Test
                 switch response.statusCode{
                 case 200...299:
                     do {
