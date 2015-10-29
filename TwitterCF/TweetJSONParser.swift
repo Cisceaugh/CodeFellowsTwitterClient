@@ -4,7 +4,7 @@
 //
 //  Created by Francisco Ragland Jr on 10/26/15.
 //  Copyright © 2015 Francisco Ragland. All rights reserved.
-// git test comment
+//  test comment
 
 import Foundation
 
