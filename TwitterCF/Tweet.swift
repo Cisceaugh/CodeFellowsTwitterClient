@@ -10,14 +10,23 @@ import UIKit
 
 class Tweet {
     
-    let text : String
-    let id : String
+    let text: String
+    let id: String
     var user: User?
     
-    init(text : String, id : String, user: User? = nil) {
+    let rqText: String?
+    let rqUser: User?
+    
+    var isRetweet: Bool
+    
+    init(text: String, rqText: String? = nil, id: String, user: User? = nil,
+        rqUser: User? = nil, isRetweet: Bool = false) {
         self.text =  text
         self.id = id
         self.user = user
+        self.isRetweet = isRetweet
+        self.rqText = rqText
+        self.rqUser = rqUser
     }
     
 }

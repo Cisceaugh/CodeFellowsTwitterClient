@@ -30,7 +30,6 @@ class TwitterService {
                     print(error.description)
                     completion("ERROR: SLRequest type GET for /1.1/statuses/home_timeline.json could not be completed.", nil); return
                 }
-                print(response.description)
                 
                 switch response.statusCode {
                 case 200...299:
