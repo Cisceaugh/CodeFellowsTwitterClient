@@ -17,7 +17,7 @@ class TweetDetailViewController: UIViewController {
     private lazy var detailLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFontOfSize(12)
-        label.text = "Created by Michael"
+        label.text = "Created by Cisco"
         label.textColor = UIColor.blueColor()
         return label
         }()

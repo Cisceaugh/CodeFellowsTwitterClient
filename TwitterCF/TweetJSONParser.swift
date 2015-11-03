@@ -34,7 +34,7 @@ class TweetJSONParser {
 
                         let tweet = Tweet(text : text, id : id)
                         
-                        if let name = user["name"] as? String, profileImageURL = user["profile_image_url"] as? String {
+                        if let name = user["name"] as? String, profileImageURL = user["profile_image_url_https"] as? String {
                             tweet.user = User(name: name, profileImageURL: profileImageURL)
                         }
                         
@@ -82,7 +82,7 @@ class func isQuote(tweetObject: [String: AnyObject]) -> Bool {
     }
 
     class func userFromData(user : [String : AnyObject]) -> User? {
-        if let name = user["name"] as? String, profileImageURL = user["profile_image_url"] as? String {
+        if let name = user["name"] as? String, profileImageURL = user["profile_image_url_https"] as? String {
             return User(name: name,  profileImageURL: profileImageURL)
         }
         
