@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CustomTweetTableViewCell" rowHeight="99" id="LjC-40-ph9" customClass="CustomTweetTableViewCell" customModule="TwitterCF" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="336" height="99"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LjC-40-ph9" id="sWB-J1-9mQ">
+                <rect key="frame" x="0.0" y="0.0" width="336" height="98.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NlB-Ir-6Rb">
+                        <rect key="frame" x="8" y="8" width="60" height="60"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="JDo-48-Wek"/>
+                            <constraint firstAttribute="height" constant="60" id="SRK-yP-0Hx"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MSf-rY-o4e">
+                        <rect key="frame" x="8" y="8" width="60" height="60"/>
+                        <animations/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="QlU-PN-cd3"/>
+                            <constraint firstAttribute="width" constant="60" id="kHl-sK-fdw"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zyU-Dn-ZfQ">
+                        <rect key="frame" x="82" y="8.5" width="246" height="20.5"/>
+                        <animations/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <animations/>
+                <constraints>
+                    <constraint firstItem="zyU-Dn-ZfQ" firstAttribute="leading" secondItem="MSf-rY-o4e" secondAttribute="trailing" constant="14" id="0Ab-hH-391"/>
+                    <constraint firstItem="NlB-Ir-6Rb" firstAttribute="top" secondItem="sWB-J1-9mQ" secondAttribute="topMargin" id="9jz-kb-r0S"/>
+                    <constraint firstItem="zyU-Dn-ZfQ" firstAttribute="top" secondItem="sWB-J1-9mQ" secondAttribute="topMargin" id="Chu-jV-APp"/>
+                    <constraint firstItem="MSf-rY-o4e" firstAttribute="top" secondItem="sWB-J1-9mQ" secondAttribute="topMargin" id="IOC-K7-wtw"/>
+                    <constraint firstItem="MSf-rY-o4e" firstAttribute="leading" secondItem="sWB-J1-9mQ" secondAttribute="leadingMargin" id="Rk4-uT-h0m"/>
+                    <constraint firstItem="NlB-Ir-6Rb" firstAttribute="leading" secondItem="sWB-J1-9mQ" secondAttribute="leadingMargin" id="apM-FD-UDF"/>
+                    <constraint firstItem="zyU-Dn-ZfQ" firstAttribute="trailing" secondItem="sWB-J1-9mQ" secondAttribute="trailingMargin" id="jCr-XK-evM"/>
+                    <constraint firstItem="zyU-Dn-ZfQ" firstAttribute="leading" secondItem="NlB-Ir-6Rb" secondAttribute="trailing" constant="14" id="sFn-U7-sFM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <animations/>
+            <connections>
+                <outlet property="imgView" destination="MSf-rY-o4e" id="UV5-eV-bij"/>
+                <outlet property="tweetTextLabel" destination="zyU-Dn-ZfQ" id="Rhb-kR-tx8"/>
+            </connections>
+            <point key="canvasLocation" x="239" y="264.5"/>
+        </tableViewCell>
+    </objects>
+</document>

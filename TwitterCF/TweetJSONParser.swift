@@ -81,10 +81,9 @@ class func isQuote(tweetObject: [String: AnyObject]) -> Bool {
         return false
     }
 
-    class func userFromData(user: [String : AnyObject]) -> User? {
-        if let name = user["name"] as? String,
-            profileImageURL = user["profile_image_url"] as? String {
-                return User(name: name,  profileImageURL: profileImageURL)
+    class func userFromData(user : [String : AnyObject]) -> User? {
+        if let name = user["name"] as? String, profileImageURL = user["profile_image_url"] as? String {
+            return User(name: name,  profileImageURL: profileImageURL)
         }
         
         return nil

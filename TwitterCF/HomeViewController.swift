@@ -25,10 +25,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.tableView.estimatedRowHeight = 100
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
-        let customTweetCellXib = UINib(nibName: "CustomTweetCell", bundle: NSBundle.mainBundle())
+        let customTweetCellXib = UINib(nibName: "CustomTweetTableViewCell", bundle: NSBundle.mainBundle())
         self.tableView.registerNib(customTweetCellXib, forCellReuseIdentifier: CustomTweetTableViewCell.identifier())
         
-        self.setupTableView()
+        self.setUpTableView()
         self.getAccount()
 
     }
@@ -114,7 +114,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(CustomTweetTableViewCell.identifier(), forIndexPath: indexPath) as! CustomTweetTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier (CustomTweetTableViewCell.identifier(), forIndexPath: indexPath) as! CustomTweetTableViewCell
         
         cell.tweet = tweets[indexPath.row]
         
@@ -122,9 +122,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.performSegueWithIdentifier(TweetDetailViewController.indentifier(), sender: nil)
+        self.performSegueWithIdentifier(TweetDetailViewController.identifier(), sender: nil)
     }
-    
 }
 
 

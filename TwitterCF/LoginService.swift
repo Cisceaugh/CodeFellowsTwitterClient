@@ -10,16 +10,15 @@ import Foundation
 import Accounts
 
 class LoginService {
-    // a function that will log in to twitter takes an optional string and acaccount
     class func loginTwitter(completionHandler: (String?, ACAccount?) -> ()) {
         
-        // Set up Account Store for accessing/manipulating accounts
+        // Set up Account Store
         let accountStore = ACAccountStore()
         
-        // Returns an account type with a twitter account type identifier of twitter
+        // Give Account Store an account type (Twitter)
         let accountType = accountStore.accountTypeWithAccountTypeIdentifier(ACAccountTypeIdentifierTwitter)
         
-        // Goes in and requests access to the twitter 
+        // End of this is a closure
         accountStore.requestAccessToAccountsWithType(accountType, options: nil, completion: { (granted, error) -> Void in
             if let _ = error {
                 completionHandler("ERROR: Request access to accounts returned an error.", nil); return

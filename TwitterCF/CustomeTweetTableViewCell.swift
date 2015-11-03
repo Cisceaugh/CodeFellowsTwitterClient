@@ -10,9 +10,14 @@ import UIKit
 
 class CustomTweetTableViewCell: UITableViewCell {
     
+//    @IBOutlet weak var imgView: UIImageView!
+//    
+//    @IBOutlet weak var tweetTextLabel: UILabel!
+    
     @IBOutlet weak var imgView: UIImageView!
     
     @IBOutlet weak var tweetTextLabel: UILabel!
+    
     
     var tweet: Tweet? {
         

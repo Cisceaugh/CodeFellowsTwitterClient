@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -50,7 +51,7 @@
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
-                                            <segue destination="fDA-gr-QXH" kind="show" identifier="DetailViewController" id="chy-x1-sKQ"/>
+                                            <segue destination="fDA-gr-QXH" kind="show" identifier="TweetDetailViewController" id="chy-x1-sKQ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -74,10 +75,10 @@
             </objects>
             <point key="canvasLocation" x="2754" y="154"/>
         </scene>
-        <!--View Controller-->
+        <!--Tweet Detail View Controller-->
         <scene sceneID="8kq-fR-efg">
             <objects>
-                <viewController id="fDA-gr-QXH" sceneMemberID="viewController">
+                <viewController id="fDA-gr-QXH" customClass="TweetDetailViewController" customModule="TwitterCF" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zzJ-Fb-250"/>
                         <viewControllerLayoutGuide type="bottom" id="9k7-gn-8qG"/>
@@ -85,9 +86,26 @@
                     <view key="view" contentMode="scaleToFill" id="e8E-Qn-wNf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x4v-6b-c8A">
+                                <rect key="frame" x="20" y="289" width="560" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="x4v-6b-c8A" firstAttribute="trailing" secondItem="e8E-Qn-wNf" secondAttribute="trailingMargin" id="7jd-ga-8Kc"/>
+                            <constraint firstItem="x4v-6b-c8A" firstAttribute="leading" secondItem="e8E-Qn-wNf" secondAttribute="leadingMargin" id="Io8-0v-8xH"/>
+                            <constraint firstItem="x4v-6b-c8A" firstAttribute="centerY" secondItem="e8E-Qn-wNf" secondAttribute="centerY" id="Ywy-Cr-Bkr"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tweetLabel" destination="x4v-6b-c8A" id="lrV-Jr-nWh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KJ6-ph-uCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

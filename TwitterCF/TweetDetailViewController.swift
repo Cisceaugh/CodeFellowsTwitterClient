@@ -22,7 +22,7 @@ class TweetDetailViewController: UIViewController {
         return label
         }()
     
-    class func indentifier() -> String {
+    class func identifier() -> String {
         return "TweetDetailViewController"
     }
     
